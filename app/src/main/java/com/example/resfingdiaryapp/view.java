@@ -72,6 +72,7 @@ public class view extends AppCompatActivity {
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 emailIntent.putExtra(Intent.EXTRA_TEXT,body);
                 startActivity(emailIntent); // Works so ignoring later part
+
                 if (emailIntent.resolveActivity(getPackageManager()) != null){
                     startActivity(emailIntent);
                 }else {

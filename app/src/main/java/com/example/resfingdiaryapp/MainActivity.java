@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -18,17 +17,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButtonToggleGroup;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     myDbAdapter helper;
 
     Button addEntry;
-    Button reloadButton;
+    Button searchButton;
     Button getData;
     TextView textView;
     EditText entryNumber;
+    EditText searchBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
         getData = (Button) findViewById(R.id.getData);
         textView = (TextView) findViewById(R.id.dataView);
         entryNumber = (EditText) findViewById(R.id.selectNumber);
-        reloadButton = (Button) findViewById(R.id.reloadButton);
+        searchButton = (Button) findViewById(R.id.searchButton);
+        searchBox = (EditText) findViewById(R.id.searchBox);
 
         loadData();
         addEntry.setOnClickListener(new View.OnClickListener() {
@@ -67,10 +69,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        reloadButton.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadData();
+                String searchEntry = searchBox.getText().toString();
+                Log.w("this",">"+searchEntry+"<");
+                if (searchEntry.equals("")){Log.w("this","NO DATA HERE EMPTY STRING");};
+                searchData(searchEntry);
+
+                //Pull keyboard down
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(entryNumber.getWindowToken(), 0);
                 entryNumber.setText("");
@@ -85,6 +92,21 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(data);
     }
 
+    public void searchData(String searchString){
+        String data = helper.getData();
+        String[] dataArray = data.split("\n");
+        StringBuffer buffer = new StringBuffer();
+        for (String sr: dataArray){
+            if(sr.toLowerCase().contains(searchString.toLowerCase())){
+                buffer.append(sr+"\n");
+                Log.w("this","Found match>"+sr);
+            }
+        }
+        textView.setText(buffer.toString());
+        Log.w("this","OUTPUT>"+buffer.toString());
+    }
+
+    //Currently unused user for getting row number in main screen
     public void loadDataById(int idn){
         String data = helper.getDataByID(idn);
         Message.message(this,data);
