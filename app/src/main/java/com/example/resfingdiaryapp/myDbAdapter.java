@@ -70,11 +70,17 @@ public class myDbAdapter {
         int count = db.delete(myDbHelper.TABLE_NAME,myDbHelper.UID+" = ?",whereArgs);
         return count;
     }
-    public int update(){
+    public int update(String rowId,String title,int fromPage, int toPage, String dateTime, String readerComment,String supportComment){
         SQLiteDatabase db = myhelper.getWritableDatabase();
-        String[] whereArgs = {"stuff"};
-        int count = 4;
-
+        String[] whereArgs = {rowId};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(myDbHelper.Title,title);
+        contentValues.put(myDbHelper.FromPage,fromPage);
+        contentValues.put(myDbHelper.ToPage,toPage);
+        contentValues.put(myDbHelper.DateTime,dateTime);
+        contentValues.put(myDbHelper.ReaderComment,readerComment);
+        contentValues.put(myDbHelper.SupportComment,supportComment);
+        int count = db.update(myDbHelper.TABLE_NAME,contentValues,myDbHelper.UID+" = ?",whereArgs);
         return count;
     }
 

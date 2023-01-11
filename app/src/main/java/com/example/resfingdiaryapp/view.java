@@ -84,5 +84,13 @@ public class view extends AppCompatActivity {
             }
         });
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editScreen = new Intent(view.this,edit.class);
+                editScreen.putExtra("rowData",PRD);
+                startActivity(editScreen);
+            }
+        });
     }
 }

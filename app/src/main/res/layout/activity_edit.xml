@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="newDate"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,11 +21,14 @@
         android:id="@+id/editTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Title"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="75dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newDate" />
 
     <TableRow
         android:id="@+id/tableRow"
@@ -33,17 +37,18 @@
         android:layout_marginTop="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTitle"
-        app:layout_constraintVertical_bias="0.120000005"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="-16dp">
 
         <TextView
             android:id="@+id/textFromPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="From page: " />
+            android:text="From page: "
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editFromPAge"
+            android:id="@+id/editNewFromPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="2"
@@ -54,10 +59,11 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="toPage" />
+            android:text="toPage"
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/editNewToPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="2"
@@ -99,7 +105,7 @@
                 android:text="Teacher/ Parent Comments" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine2"
+                android:id="@+id/editSupportComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
