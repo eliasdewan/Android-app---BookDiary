@@ -43,7 +43,7 @@ public class myDbAdapter {
             String dateTime = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.DateTime));
             String readerComment = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.ReaderComment));
             String supportComment = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.SupportComment));
-            buffer.append(cid+" "+title+" "+fromPage+" "+toPage+" "+dateTime+" "+readerComment+" "+supportComment+" \n");
+            buffer.append((">"+cid+" "+title+" "+fromPage+" "+toPage+" "+dateTime+" "+readerComment+" "+supportComment).replaceAll("[\r\n]+", " ")+" \n");
         }
         return buffer.toString();
     }

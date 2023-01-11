@@ -79,8 +79,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Readers comments:"
-                android:textColor="#090909"
-                android:textSize="20sp" />
+                android:textColor="#009688"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/commentBook"
@@ -89,6 +90,7 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Comment on the book"
+                android:textColor="#A8000000"
                 android:textSize="20sp" />
 
             <TextView
@@ -96,8 +98,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Parent/Teacher Comments:"
-                android:textColor="#090909"
-                android:textSize="20sp" />
+                android:textColor="#009688"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/supportComment"
@@ -108,6 +111,7 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Support Commnet"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

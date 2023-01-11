@@ -2,6 +2,7 @@ package com.example.resfingdiaryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -84,6 +85,8 @@ public class edit extends AppCompatActivity {
 
             helper.update(rowId,titleString,fromInt,toInt,timeString,commentString,supportCommentString);
             Message.message(getApplicationContext(),"Edit successful");
+            Intent intent = getIntent();
+            setResult(RESULT_OK, intent);
             finish();
             //name.setText("");
         }

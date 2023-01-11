@@ -1,7 +1,12 @@
 package com.example.resfingdiaryapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,7 +39,8 @@ public class view extends AppCompatActivity {
 
         helper = new myDbAdapter(this);
 
-        String rowData = getIntent().getStringExtra("rowData");
+        int rowNumber = getIntent().getIntExtra("rowId",0);
+        String rowData = helper.getDataByID(rowNumber);
         String[] PRD = rowData.split("<>");
 
         title = (TextView) findViewById(R.id.titleBook);
@@ -47,7 +53,7 @@ public class view extends AppCompatActivity {
         remove = (Button) findViewById(R.id.removeButton);
 
 
-        supportComment.setText(rowData);
+        //supportComment.setText(rowData);
         title.setText(PRD[1]);
         pages.setText("From page : " +PRD[2] +" to page: "+PRD[3]);
         dateText.setText(PRD[4]);
@@ -80,6 +86,8 @@ public class view extends AppCompatActivity {
             public void onClick(View view) {
                 helper.delete(PRD[0]);
                 Message.message(getApplicationContext(),"Deleted");
+                Intent intent = getIntent();
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -89,8 +97,38 @@ public class view extends AppCompatActivity {
             public void onClick(View view) {
                 Intent editScreen = new Intent(view.this,edit.class);
                 editScreen.putExtra("rowData",PRD);
-                startActivity(editScreen);
+                //startActivity(editScreen);
+                activityResultLauncher.launch(editScreen);
+
             }
         });
     }
+
+    public void refreshData(){
+        int rowNumber = getIntent().getIntExtra("rowId",0);
+        String rowData = helper.getDataByID(rowNumber);
+        String[] PRD = rowData.split("<>");
+
+        title.setText(PRD[1]);
+        pages.setText("From page : " +PRD[2] +" to page: "+PRD[3]);
+        dateText.setText(PRD[4]);
+        readerComment.setText(PRD[5]);
+        supportComment.setText(PRD[6]);
+
+    }
+
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Message.message(getApplicationContext(),"Got result EDITED time to update");
+                        refreshData();
+                        // There are no request codes
+                        //Intent data = result.getData();
+                       // doSomeOperations();
+                    }
+                }
+            });
 }
