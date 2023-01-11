@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".create">
+
+    <EditText
+        android:id="@+id/titleBook"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="6dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Title"
+        app:layout_constraintBottom_toTopOf="@+id/timeStamp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.398"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editFromPage"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:hint="From Page"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/commentBook"
+        app:layout_constraintEnd_toStartOf="@+id/editToPage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeStamp"
+        app:layout_constraintVertical_bias="0.48000002" />
+
+    <EditText
+        android:id="@+id/supportComment"
+        android:layout_width="279dp"
+        android:layout_height="224dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Support Commnet"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/editButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentBook" />
+
+    <EditText
+        android:id="@+id/editToPage"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:hint="To Page"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/commentBook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editFromPage"
+        app:layout_constraintTop_toBottomOf="@+id/timeStamp" />
+
+    <EditText
+        android:id="@+id/commentBook"
+        android:layout_width="281dp"
+        android:layout_height="151dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Comment on the book"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/supportComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editFromPage" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Entry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961" />
+
+    <TextView
+        android:id="@+id/timeStamp"
+        android:layout_width="300dp"
+        android:layout_height="19dp"
+        android:text="DATE"
+        app:layout_constraintBottom_toTopOf="@+id/editFromPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleBook" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
