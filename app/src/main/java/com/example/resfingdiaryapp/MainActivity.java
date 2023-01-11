@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent createScreen = new Intent(MainActivity.this,create.class);
-                startActivity(createScreen);
+                activityResultLauncher.launch(createScreen);
             }
         });
 

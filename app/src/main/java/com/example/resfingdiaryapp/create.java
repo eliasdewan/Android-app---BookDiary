@@ -3,6 +3,7 @@ package com.example.resfingdiaryapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -80,6 +81,8 @@ public class create extends AppCompatActivity {
         }else{
             helper.insertData(titleString,fromInt,toInt,timeString,commentString,supportCommentString);
             Message.message(getApplicationContext(),"Insertion successful");
+            Intent intent = getIntent();
+            setResult(RESULT_OK, intent);
             finish();
             //name.setText("");
         }
