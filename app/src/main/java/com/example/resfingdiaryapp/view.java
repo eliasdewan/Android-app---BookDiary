@@ -63,18 +63,24 @@ public class view extends AppCompatActivity {
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri mailUri = Uri.parse("mailto:test@mail.com");
-                String subject = "This is a test email";
-                String body = " This is a test email body.\n\n";
-                body+=" This is a next line to check.\n\n";
-                body+=" This is last line body.\n\n";
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO,mailUri);
+                String[] address = {"test@mail.com"};
+                String subject = PRD[1] + "on From page : " +PRD[2] +" to page: "+PRD[3];
+                String body = "Title:"+"\n";
+                body+= subject +".\n\n";
+                body+="Reader Comment:\n";
+                body+=PRD[5] +".\n\n";
+                body+="Teacher Comment/ Parent comment:\n";
+                body+=PRD[6] +".\n\n";
+
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:"));
+                emailIntent.putExtra(Intent.EXTRA_EMAIL,address);
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 emailIntent.putExtra(Intent.EXTRA_TEXT,body);
-                startActivity(emailIntent); // Works so ignoring later part
 
+                startActivity(emailIntent); // Works so ignoring later part
                 if (emailIntent.resolveActivity(getPackageManager()) != null){
-                    startActivity(emailIntent);
+                    //startActivity(emailIntent);
                 }else {
                     Toast errorMessage = Toast.makeText(getApplicationContext(),"No email app installed",Toast.LENGTH_LONG);
                     errorMessage.show();
