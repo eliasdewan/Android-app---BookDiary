@@ -1,4 +1,4 @@
-package com.example.resfingdiaryapp;
+package com.example.readingdiaryapp;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

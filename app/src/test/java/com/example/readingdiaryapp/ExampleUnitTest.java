@@ -1,4 +1,4 @@
-package com.example.resfingdiaryapp;
+package com.example.readingdiaryapp;
 
 import org.junit.Test;
 

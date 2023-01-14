@@ -1,4 +1,4 @@
-package com.example.resfingdiaryapp;
+package com.example.readingdiaryapp;
 
 import android.content.Context;
 import android.widget.Toast;
