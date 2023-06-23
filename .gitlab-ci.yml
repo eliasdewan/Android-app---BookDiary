@@ -80,7 +80,8 @@ assembleDebug:
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 debugTests:
-  needs: [lintDebug, assembleDebug]
+  #needs: [lintDebug, assembleDebug]
+  needs: [ assembleDebug]
   interruptible: true
   stage: test
   script:
