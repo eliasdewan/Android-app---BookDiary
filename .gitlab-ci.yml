@@ -85,3 +85,12 @@ debugTests:
   stage: test
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
+
+# Save APK as an artifact
+saveAPK:
+  stage: build
+  script:
+    - cp app/build/outputs/apk/debug/*.apk app-debug.apk
+  artifacts:
+    paths:
+      - app-debug.apk
