@@ -56,17 +56,9 @@ before_script:
   - chmod +x ./gradlew
 
 # Basic android and gradle stuff
-# Save APK as an artifact
-saveAPK:
-  stage: build
-  script:
-    - cp app/build/outputs/apk/debug/*.apk app-debug.apk
-  artifacts:
-    paths:
-      - app-debug.apk
 # Check linting
 lintDebug:
-  interruptible: true
+  interruptible: false
   stage: build
   script:
     - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
