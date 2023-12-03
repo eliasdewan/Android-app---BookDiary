@@ -1,5 +1,5 @@
 # Android-app---BookDiary
-Android studio application Crete and edit entries that are supposed to be book reading record Email intent
+Android Studio application to create book reading records Email intent
 
      
     Features:
@@ -8,6 +8,8 @@ Android studio application Crete and edit entries that are supposed to be book r
       - page from and to
       - reader comments
       - supported comment
+     Edit, Delete entries
+     Send report via email app with auto-fill subject and content of the email
 
 
 <p align="center">
